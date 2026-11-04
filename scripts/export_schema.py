@@ -28,6 +28,14 @@ for t in M.sorted_tables:
         er.append(f'    {fk.column.table.name} ||--o{{ {t.name} : "{fk.parent.name}"')
 sql.extend(['REVOKE ALL ON ALL SEQUENCES IN SCHEMA public FROM anon, authenticated;','COMMIT;'])
 (root/'supabase/schema.sql').write_text('\n'.join(line.rstrip() for line in '\n\n'.join(sql).splitlines())+'\n',encoding='utf8')
+contract_tables=[t for t in M.sorted_tables if t.name=='sales_contract' or t.name.startswith('contract_')]
+contract_sql=['-- Additive contract module DDL. Apply once to the existing ERP database.','BEGIN;','SET LOCAL search_path = public;']
+for t in contract_tables:
+    contract_sql.append(str(CreateTable(t).compile(dialect=dialect))+';')
+    contract_sql.extend(str(CreateIndex(i).compile(dialect=dialect))+';' for i in sorted(t.indexes,key=lambda i:i.name))
+    contract_sql.extend([f'ALTER TABLE public."{t.name}" ENABLE ROW LEVEL SECURITY;',f'REVOKE ALL ON TABLE public."{t.name}" FROM anon, authenticated;',f'REVOKE ALL ON SEQUENCE public."{t.name}_id_seq" FROM anon, authenticated;'])
+contract_sql.append('COMMIT;')
+(root/'supabase/contracts.sql').write_text('\n'.join(line.rstrip() for line in '\n\n'.join(contract_sql).splitlines())+'\n',encoding='utf8')
 (root/'docs/ER.mmd').write_text('\n'.join(er),encoding='utf8')
 (root/'docs/数据字典.md').write_text('\n'.join(dictionary),encoding='utf8')
 print(f'Exported {len(M.tables)} tables, indexes, RLS, ER, and dictionary.')

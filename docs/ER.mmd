@@ -196,6 +196,26 @@ erDiagram
         VARCHAR_120 created_at
         VARCHAR_120 updated_at
     }
+    sales_contract {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER organization_id FK
+        VARCHAR_80 contract_no
+        VARCHAR_200 title
+        VARCHAR_20 kind
+        INTEGER salesperson_id FK
+        INTEGER owner_id FK
+        VARCHAR_10 signed_on
+        VARCHAR_10 valid_from
+        VARCHAR_10 valid_to
+        VARCHAR_500 payment_terms
+        TEXT service_terms
+        TEXT notes
+        VARCHAR_20 status
+        INTEGER version
+        VARCHAR_120 created_at
+        VARCHAR_120 updated_at
+    }
     stock_balance {
         INTEGER id PK
         INTEGER company_id FK
@@ -216,6 +236,42 @@ erDiagram
         TEXT before_state
         TEXT after_state
         VARCHAR_120 created_at
+    }
+    contract_attachment {
+        INTEGER id PK
+        INTEGER contract_id FK
+        VARCHAR_300 object_key
+        VARCHAR_180 filename
+        VARCHAR_120 content_type
+        INTEGER size_bytes
+        VARCHAR_64 sha256
+        INTEGER uploaded_by FK
+        VARCHAR_120 created_at
+    }
+    contract_customer {
+        INTEGER id PK
+        INTEGER contract_id FK
+        INTEGER partner_id FK
+    }
+    contract_event {
+        INTEGER id PK
+        INTEGER contract_id FK
+        INTEGER actor_id FK
+        VARCHAR_120 action
+        VARCHAR_1000 note
+        VARCHAR_120 created_at
+    }
+    contract_price {
+        INTEGER id PK
+        INTEGER contract_id FK
+        INTEGER line_no
+        INTEGER material_id FK
+        BIGINT unit_price_cents
+        NUMERIC_24__6 min_qty
+        NUMERIC_24__6 max_qty
+        NUMERIC_8__6 tax_rate
+        BOOLEAN includes_tax
+        VARCHAR_500 remark
     }
     cost_calculation {
         INTEGER id PK
@@ -383,12 +439,24 @@ erDiagram
     partner ||--o{ document : "partner_id"
     document_type ||--o{ document : "type_code"
     warehouse ||--o{ document : "warehouse_id"
+    company ||--o{ sales_contract : "company_id"
+    organization ||--o{ sales_contract : "organization_id"
+    app_user ||--o{ sales_contract : "owner_id"
+    employee ||--o{ sales_contract : "salesperson_id"
     company ||--o{ stock_balance : "company_id"
     lot ||--o{ stock_balance : "lot_id"
     material ||--o{ stock_balance : "material_id"
     warehouse ||--o{ stock_balance : "warehouse_id"
     company ||--o{ audit_event : "company_id"
     document ||--o{ audit_event : "document_id"
+    sales_contract ||--o{ contract_attachment : "contract_id"
+    app_user ||--o{ contract_attachment : "uploaded_by"
+    sales_contract ||--o{ contract_customer : "contract_id"
+    partner ||--o{ contract_customer : "partner_id"
+    app_user ||--o{ contract_event : "actor_id"
+    sales_contract ||--o{ contract_event : "contract_id"
+    sales_contract ||--o{ contract_price : "contract_id"
+    material ||--o{ contract_price : "material_id"
     company ||--o{ cost_calculation : "company_id"
     material ||--o{ cost_calculation : "material_id"
     document ||--o{ cost_calculation : "production_id"

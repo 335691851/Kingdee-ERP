@@ -52,3 +52,28 @@ voucher=table('voucher',field('company_id',Integer,'company.id',index=True),fiel
 voucher_line=table('voucher_line',field('voucher_id',Integer,'voucher.id',index=True),field('account_id',Integer,'gl_account.id'),field('debit_cents',BigInteger),field('credit_cents',BigInteger),extra=[CheckConstraint('(debit_cents > 0 AND credit_cents = 0) OR (credit_cents > 0 AND debit_cents = 0)')])
 audit_event=table('audit_event',field('company_id',Integer,'company.id'),field('document_id',Integer,'document.id',True,index=True),field('actor'),field('action'),field('before_state',Text),field('after_state',Text),field('created_at'))
 seed_run=table('seed_run',field('seed_key',unique=True),field('created_at'),field('cycles',Integer),field('is_simulated',Boolean))
+
+# Sales-uploaded commercial agreements; independent of simulated trading documents.
+sales_contract=table('sales_contract',
+    field('company_id',Integer,'company.id',index=True),field('organization_id',Integer,'organization.id'),
+    field('contract_no',String(80)),field('title',String(200)),field('kind',String(20)),
+    field('salesperson_id',Integer,'employee.id'),field('owner_id',Integer,'app_user.id'),
+    field('signed_on',String(10)),field('valid_from',String(10)),field('valid_to',String(10)),
+    field('payment_terms',String(500)),field('service_terms',Text),field('notes',Text),
+    field('status',String(20)),field('version',Integer),field('created_at'),field('updated_at'),
+    extra=[UniqueConstraint('company_id','contract_no'),CheckConstraint("kind IN ('goods','service','mixed')"),
+           CheckConstraint("status IN ('draft','submitted','approved','rejected','terminated')"),
+           CheckConstraint('valid_to >= valid_from'),CheckConstraint('version > 0')])
+contract_customer=table('contract_customer',field('contract_id',Integer,'sales_contract.id',index=True),
+    field('partner_id',Integer,'partner.id'),extra=[UniqueConstraint('contract_id','partner_id')])
+contract_price=table('contract_price',field('contract_id',Integer,'sales_contract.id',index=True),
+    field('line_no',Integer),field('material_id',Integer,'material.id'),field('unit_price_cents',BigInteger),
+    field('min_qty',Numeric(24,6)),field('max_qty',Numeric(24,6),nullable=True),field('tax_rate',Numeric(8,6)),
+    field('includes_tax',Boolean),field('remark',String(500)),
+    extra=[UniqueConstraint('contract_id','line_no'),CheckConstraint('unit_price_cents >= 0 AND min_qty >= 0'),
+           CheckConstraint('max_qty IS NULL OR max_qty >= min_qty'),CheckConstraint('tax_rate >= 0 AND tax_rate <= 1')])
+contract_attachment=table('contract_attachment',field('contract_id',Integer,'sales_contract.id',index=True),
+    field('object_key',String(300),unique=True),field('filename',String(180)),field('content_type'),
+    field('size_bytes',Integer),field('sha256',String(64)),field('uploaded_by',Integer,'app_user.id'),field('created_at'))
+contract_event=table('contract_event',field('contract_id',Integer,'sales_contract.id',index=True),
+    field('actor_id',Integer,'app_user.id'),field('action'),field('note',String(1000)),field('created_at'))

@@ -6,3 +6,7 @@ SUPABASE_PUBLISHABLE_KEY=sb_publishable_jnmIgT73lZUvxqI8SpaTDA_5mf4Iv6i
 DATABASE_URL=<your Supabase transaction pooler URL with sslmode=require>
 # Keep initialization disabled after the first successful build.
 ERP_INITIALIZE_DATABASE=0
+# Contract attachments: create a PRIVATE bucket in the existing Supabase project.
+CONTRACT_STORAGE_BACKEND=supabase
+CONTRACT_STORAGE_BUCKET=erp-contracts
+SUPABASE_SECRET_KEY=<server-only Supabase secret API key; save as Vercel Secret>

@@ -17,6 +17,8 @@ from .services import get_doc,create_document,transition,settle,now,audit,money
 
 log=logging.getLogger('erp')
 app=FastAPI(title='鲁盐集团 ERP · 模拟业务系统',version='1.0.0',docs_url=None if PRODUCTION else '/api/docs',openapi_url='/api/openapi.json')
+from .contracts import router as contracts_router
+app.include_router(contracts_router)
 STATIC=Path(__file__).parent/'static'
 app.mount('/assets',StaticFiles(directory=STATIC),name='assets')
 User=Annotated[dict,Depends(current_user)]
