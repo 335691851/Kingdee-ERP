@@ -5,7 +5,7 @@ from decimal import Decimal
 from typing import Annotated
 import httpx
 from fastapi import FastAPI,Depends,HTTPException,Request,Response
-from fastapi.responses import FileResponse,StreamingResponse
+from fastapi.responses import FileResponse,StreamingResponse,HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel,Field,field_validator
 from sqlalchemy import select,func,or_,and_,update
@@ -58,7 +58,15 @@ async def safety(request,call_next):
     response.headers['Content-Security-Policy']="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'"
     return response
 @app.get('/')
-def index():return FileResponse(STATIC/'index.html')
+def index():
+    if not PRODUCTION:return FileResponse(STATIC/'index.html')
+    # Render production login configuration before JavaScript loads.
+    import re
+    html=(STATIC/'index.html').read_text(encoding='utf8')
+    html=html.replace('id="username" value="admin"','id="username" value="" placeholder="Supabase 登录邮箱"')
+    html=html.replace('id="password" value="luyan-demo-2026"','id="password" value=""')
+    html=re.sub(r'<div class="login-note">.*?</div>','<div class="login-note">使用已开通 ERP 法人权限的 Supabase 账户登录。所有历史交易为模拟数据。</div>',html,count=1)
+    return HTMLResponse(html)
 @app.get('/api/health')
 def health():
     try:
