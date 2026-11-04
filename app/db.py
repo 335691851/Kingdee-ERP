@@ -3,10 +3,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from sqlalchemy import create_engine,event
 from sqlalchemy.pool import NullPool
+from .config import normalize_database_url
 load_dotenv('.env.local')
-URL=os.getenv('DATABASE_URL','sqlite:///./work/erp.db')
-if URL.startswith('postgres://'): URL=URL.replace('postgres://','postgresql+psycopg://',1)
-elif URL.startswith('postgresql://'): URL=URL.replace('postgresql://','postgresql+psycopg://',1)
+URL=normalize_database_url(os.getenv('DATABASE_URL','sqlite:///./work/erp.db'))
 PRODUCTION=bool(os.getenv('VERCEL')) or os.getenv('AUTH_MODE')=='supabase'
 if PRODUCTION and not URL.startswith('postgresql+psycopg://'):
     raise RuntimeError('Production requires Supabase PostgreSQL DATABASE_URL; SQLite is local-only.')
