@@ -1,0 +1,421 @@
+erDiagram
+    app_user {
+        INTEGER id PK
+        VARCHAR_120 subject
+        VARCHAR_120 name
+        BOOLEAN enabled
+    }
+    company {
+        INTEGER id PK
+        VARCHAR_120 code
+        VARCHAR_200 name
+        VARCHAR_120 kind
+        BOOLEAN legal_name_confirmed
+        INTEGER parent_id FK
+    }
+    currency {
+        INTEGER id PK
+        VARCHAR_120 code
+        VARCHAR_120 name
+    }
+    document_type {
+        INTEGER id PK
+        VARCHAR_120 code
+        VARCHAR_120 label
+        VARCHAR_120 module
+        VARCHAR_120 prefix
+    }
+    gl_account {
+        INTEGER id PK
+        VARCHAR_120 code
+        VARCHAR_120 name
+    }
+    material_category {
+        INTEGER id PK
+        VARCHAR_120 name
+        VARCHAR_120 code
+        INTEGER parent_id FK
+        INTEGER level
+    }
+    seed_run {
+        INTEGER id PK
+        VARCHAR_120 seed_key
+        VARCHAR_120 created_at
+        INTEGER cycles
+        BOOLEAN is_simulated
+    }
+    uom {
+        INTEGER id PK
+        VARCHAR_120 name
+    }
+    bank_account {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_120 name
+        VARCHAR_120 masked_account
+    }
+    cost_center {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_120 name
+    }
+    cost_rule {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_120 cost_item
+        VARCHAR_120 allocation_basis
+    }
+    department {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_120 name
+    }
+    fiscal_period {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_7 period
+        BOOLEAN closed
+    }
+    ledger {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_120 name
+        INTEGER currency_id FK
+    }
+    material {
+        INTEGER id PK
+        VARCHAR_120 code
+        VARCHAR_260 name
+        VARCHAR_120 spec
+        INTEGER category_id FK
+        INTEGER uom_id FK
+        VARCHAR_120 kind
+        BIGINT list_price_cents
+        BOOLEAN lot_managed
+        VARCHAR_16 salt_origin
+        VARCHAR_16 packaging
+        VARCHAR_120 product_feature
+        VARCHAR_16 classification_status
+        VARCHAR_300 source_note
+    }
+    membership {
+        INTEGER id PK
+        INTEGER user_id FK
+        INTEGER company_id FK
+        VARCHAR_120 role
+    }
+    organization {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_120 name
+        VARCHAR_120 function
+    }
+    partner {
+        INTEGER id PK
+        VARCHAR_120 code
+        VARCHAR_220 name
+        VARCHAR_120 kind
+        INTEGER related_company_id FK
+    }
+    warehouse {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_120 name
+        VARCHAR_120 kind
+    }
+    bin_location {
+        INTEGER id PK
+        INTEGER warehouse_id FK
+        VARCHAR_120 code
+    }
+    bom {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER material_id FK
+        VARCHAR_120 version
+        NUMERIC_8__6 yield_rate
+    }
+    cost_pool {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_7 period
+        INTEGER center_id FK
+        VARCHAR_120 item
+        BIGINT amount_cents
+    }
+    employee {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER department_id FK
+        VARCHAR_120 name
+    }
+    lot {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER material_id FK
+        VARCHAR_120 lot_no
+        VARCHAR_10 manufactured_on
+        VARCHAR_10 expires_on
+    }
+    material_org {
+        INTEGER id PK
+        INTEGER material_id FK
+        INTEGER company_id FK
+    }
+    partner_role {
+        INTEGER id PK
+        INTEGER partner_id FK
+        INTEGER company_id FK
+        VARCHAR_120 role
+    }
+    bom_line {
+        INTEGER id PK
+        INTEGER bom_id FK
+        INTEGER component_id FK
+        NUMERIC_24__6 qty_per_ton
+    }
+    document {
+        INTEGER id PK
+        INTEGER company_id FK
+        VARCHAR_40 type_code FK
+        VARCHAR_100 bill_no
+        VARCHAR_10 bill_date
+        VARCHAR_20 status
+        INTEGER partner_id FK
+        INTEGER employee_id FK
+        INTEGER warehouse_id FK
+        INTEGER currency_id FK
+        BIGINT net_cents
+        BIGINT tax_cents
+        BIGINT total_cents
+        BIGINT settled_cents
+        BIGINT freight_cents
+        INTEGER version
+        BOOLEAN is_simulated
+        TEXT memo
+        VARCHAR_120 created_at
+        VARCHAR_120 updated_at
+    }
+    stock_balance {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER warehouse_id FK
+        INTEGER material_id FK
+        INTEGER lot_id FK
+        NUMERIC_24__6 qty
+        NUMERIC_24__6 reserved_qty
+        BIGINT cost_cents
+        INTEGER version
+    }
+    audit_event {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER document_id FK
+        VARCHAR_120 actor
+        VARCHAR_120 action
+        TEXT before_state
+        TEXT after_state
+        VARCHAR_120 created_at
+    }
+    cost_calculation {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER production_id FK
+        INTEGER material_id FK
+        VARCHAR_7 period
+        NUMERIC_24__6 output_qty
+        BIGINT material_cents
+        BIGINT labor_cents
+        BIGINT overhead_cents
+        BIGINT opening_wip_cents
+        BIGINT closing_wip_cents
+        BIGINT total_cents
+        VARCHAR_120 status
+        INTEGER version
+    }
+    document_line {
+        INTEGER id PK
+        INTEGER document_id FK
+        INTEGER line_no
+        INTEGER material_id FK
+        NUMERIC_24__6 qty
+        BIGINT unit_price_cents
+        NUMERIC_8__6 tax_rate
+        BIGINT net_cents
+        BIGINT tax_cents
+        BIGINT total_cents
+        BIGINT cost_cents
+        INTEGER lot_id FK
+    }
+    document_link {
+        INTEGER id PK
+        INTEGER source_id FK
+        INTEGER target_id FK
+        VARCHAR_120 relation
+    }
+    operation_report {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER production_id FK
+        INTEGER employee_id FK
+        VARCHAR_120 operation
+        NUMERIC_20__4 machine_hours
+        NUMERIC_20__4 labor_hours
+        NUMERIC_24__6 good_qty
+        NUMERIC_24__6 scrap_qty
+    }
+    payment_schedule {
+        INTEGER id PK
+        INTEGER document_id FK
+        VARCHAR_10 due_date
+        BIGINT amount_cents
+    }
+    production_detail {
+        INTEGER id PK
+        INTEGER document_id FK
+        INTEGER bom_id FK
+        NUMERIC_24__6 planned_qty
+        NUMERIC_24__6 completed_qty
+        VARCHAR_120 work_center
+        VARCHAR_10 start_date
+        VARCHAR_10 end_date
+    }
+    sales_terms {
+        INTEGER id PK
+        INTEGER document_id FK
+        VARCHAR_120 department
+        VARCHAR_120 sales_group
+        VARCHAR_120 payment_terms
+        VARCHAR_120 delivery_method
+        VARCHAR_120 ship_from
+        VARCHAR_120 ship_to
+        VARCHAR_300 ship_address
+        VARCHAR_120 carrier
+        VARCHAR_120 vehicle_no
+        BOOLEAN price_includes_tax
+    }
+    settlement {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER bill_id FK
+        INTEGER cash_id FK
+        BIGINT amount_cents
+        VARCHAR_10 settled_on
+        VARCHAR_120 posting_key
+    }
+    voucher {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER document_id FK
+        VARCHAR_120 voucher_no
+        VARCHAR_10 posted_on
+        VARCHAR_7 period
+        VARCHAR_120 status
+        VARCHAR_120 posting_key
+    }
+    cost_allocation {
+        INTEGER id PK
+        INTEGER pool_id FK
+        INTEGER calculation_id FK
+        NUMERIC_24__6 basis_qty
+        BIGINT allocated_cents
+    }
+    delivery_schedule {
+        INTEGER id PK
+        INTEGER line_id FK
+        VARCHAR_10 due_date
+        NUMERIC_24__6 qty
+        NUMERIC_24__6 fulfilled_qty
+    }
+    stock_transaction {
+        INTEGER id PK
+        INTEGER company_id FK
+        INTEGER line_id FK
+        INTEGER warehouse_id FK
+        INTEGER material_id FK
+        INTEGER lot_id FK
+        VARCHAR_10 posted_on
+        NUMERIC_24__6 qty_delta
+        BIGINT cost_delta_cents
+        VARCHAR_120 posting_key
+    }
+    voucher_line {
+        INTEGER id PK
+        INTEGER voucher_id FK
+        INTEGER account_id FK
+        BIGINT debit_cents
+        BIGINT credit_cents
+    }
+    company ||--o{ company : "parent_id"
+    material_category ||--o{ material_category : "parent_id"
+    company ||--o{ bank_account : "company_id"
+    company ||--o{ cost_center : "company_id"
+    company ||--o{ cost_rule : "company_id"
+    company ||--o{ department : "company_id"
+    company ||--o{ fiscal_period : "company_id"
+    company ||--o{ ledger : "company_id"
+    currency ||--o{ ledger : "currency_id"
+    material_category ||--o{ material : "category_id"
+    uom ||--o{ material : "uom_id"
+    company ||--o{ membership : "company_id"
+    app_user ||--o{ membership : "user_id"
+    company ||--o{ organization : "company_id"
+    company ||--o{ partner : "related_company_id"
+    company ||--o{ warehouse : "company_id"
+    warehouse ||--o{ bin_location : "warehouse_id"
+    company ||--o{ bom : "company_id"
+    material ||--o{ bom : "material_id"
+    cost_center ||--o{ cost_pool : "center_id"
+    company ||--o{ cost_pool : "company_id"
+    company ||--o{ employee : "company_id"
+    department ||--o{ employee : "department_id"
+    company ||--o{ lot : "company_id"
+    material ||--o{ lot : "material_id"
+    company ||--o{ material_org : "company_id"
+    material ||--o{ material_org : "material_id"
+    company ||--o{ partner_role : "company_id"
+    partner ||--o{ partner_role : "partner_id"
+    bom ||--o{ bom_line : "bom_id"
+    material ||--o{ bom_line : "component_id"
+    company ||--o{ document : "company_id"
+    currency ||--o{ document : "currency_id"
+    employee ||--o{ document : "employee_id"
+    partner ||--o{ document : "partner_id"
+    document_type ||--o{ document : "type_code"
+    warehouse ||--o{ document : "warehouse_id"
+    company ||--o{ stock_balance : "company_id"
+    lot ||--o{ stock_balance : "lot_id"
+    material ||--o{ stock_balance : "material_id"
+    warehouse ||--o{ stock_balance : "warehouse_id"
+    company ||--o{ audit_event : "company_id"
+    document ||--o{ audit_event : "document_id"
+    company ||--o{ cost_calculation : "company_id"
+    material ||--o{ cost_calculation : "material_id"
+    document ||--o{ cost_calculation : "production_id"
+    document ||--o{ document_line : "document_id"
+    lot ||--o{ document_line : "lot_id"
+    material ||--o{ document_line : "material_id"
+    document ||--o{ document_link : "source_id"
+    document ||--o{ document_link : "target_id"
+    company ||--o{ operation_report : "company_id"
+    employee ||--o{ operation_report : "employee_id"
+    document ||--o{ operation_report : "production_id"
+    document ||--o{ payment_schedule : "document_id"
+    bom ||--o{ production_detail : "bom_id"
+    document ||--o{ production_detail : "document_id"
+    document ||--o{ sales_terms : "document_id"
+    document ||--o{ settlement : "bill_id"
+    document ||--o{ settlement : "cash_id"
+    company ||--o{ settlement : "company_id"
+    company ||--o{ voucher : "company_id"
+    document ||--o{ voucher : "document_id"
+    cost_calculation ||--o{ cost_allocation : "calculation_id"
+    cost_pool ||--o{ cost_allocation : "pool_id"
+    document_line ||--o{ delivery_schedule : "line_id"
+    company ||--o{ stock_transaction : "company_id"
+    document_line ||--o{ stock_transaction : "line_id"
+    lot ||--o{ stock_transaction : "lot_id"
+    material ||--o{ stock_transaction : "material_id"
+    warehouse ||--o{ stock_transaction : "warehouse_id"
+    gl_account ||--o{ voucher_line : "account_id"
+    voucher ||--o{ voucher_line : "voucher_id"

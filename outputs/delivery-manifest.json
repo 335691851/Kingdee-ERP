@@ -1,0 +1,12 @@
+[
+  {
+    "file": "luyan-erp-source.zip",
+    "bytes": 539032,
+    "sha256": "08e150c58d60a8b6cebf5cac12535e0fce4b03739ab35da9859a02252d3fbfae"
+  },
+  {
+    "file": "luyan-erp-demo-data.zip",
+    "bytes": 52095563,
+    "sha256": "6056b3a95215a7fcd26e1528fe9daa2b0fd5e3467d939f2cc0c474cba146add2"
+  }
+]

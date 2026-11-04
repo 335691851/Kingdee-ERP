@@ -1,0 +1,12 @@
+.venv
+.git
+.pytest_cache
+__pycache__
+work
+outputs
+tests
+scripts
+docs
+supabase
+.env.local
+*.zip
