@@ -4,6 +4,20 @@ from pathlib import Path
 from urllib.parse import unquote,urlsplit
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 
+def validate_database_target(value,ref):
+    """Check opaque deployment configuration without including its value in errors."""
+    try:
+        target=urlsplit(value)
+        port=target.port
+        host=target.hostname or ''
+    except ValueError:
+        raise RuntimeError('DATABASE_URL format is invalid. Copy the Supabase Transaction pooler URL; do not bracket a DNS hostname or port. URL-encode password special characters.') from None
+    if target.scheme not in ('postgres','postgresql','postgresql+psycopg') or not host or not port or not target.path.strip('/'):
+        raise RuntimeError('DATABASE_URL must be a complete PostgreSQL connection URL with host, port and database.')
+    username=unquote(target.username or '')
+    if not ref or not (host==f'db.{ref}.supabase.co' or (host.endswith('.pooler.supabase.com') and username==f'postgres.{ref}')):
+        raise RuntimeError('Database target does not match ERP_BOOTSTRAP_PROJECT_REF.')
+
 def main():
     if os.getenv('ERP_INITIALIZE_DATABASE')!='1':
         print('ERP database initialization disabled; no data written.')
@@ -11,9 +25,8 @@ def main():
     if os.getenv('VERCEL_ENV')!='production':
         raise RuntimeError('Initialization is permitted only in the production build environment.')
     ref=os.getenv('ERP_BOOTSTRAP_PROJECT_REF','')
-    target=urlsplit(os.getenv('DATABASE_URL',''))
-    if not ref or (ref not in (target.hostname or '') and ref not in unquote(target.username or '')):
-        raise RuntimeError('Database target does not match ERP_BOOTSTRAP_PROJECT_REF.')
+    validate_database_target(os.getenv('DATABASE_URL',''),ref)
+    print('ERP bootstrap: target validated; checking schema.',flush=True)
     from sqlalchemy import select,func,inspect
     from app.db import engine
     from app import schema as s

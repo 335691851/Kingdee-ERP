@@ -1,0 +1,8 @@
+# Vercel Production environment (DATABASE_URL is already configured separately as Sensitive)
+AUTH_MODE=supabase
+SUPABASE_URL=https://vyulbopmxltjnptuqmcp.supabase.co
+SUPABASE_PUBLISHABLE_KEY=sb_publishable_jnmIgT73lZUvxqI8SpaTDA_5mf4Iv6i
+# Copy the actual transaction pooler URL from Supabase Connect; URL-encode password and require TLS.
+DATABASE_URL=<your Supabase transaction pooler URL with sslmode=require>
+# Keep initialization disabled after the first successful build.
+ERP_INITIALIZE_DATABASE=0
