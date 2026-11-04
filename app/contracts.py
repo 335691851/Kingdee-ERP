@@ -41,6 +41,8 @@ class Contract(BaseModel):
     signed_on:date;valid_from:date;valid_to:date
     customer_ids:list[int]=Field(min_length=1,max_length=200)
     prices:list[Price]=Field(default_factory=list,max_length=100)
+    category_ids:list[int]=Field(default_factory=list,max_length=100)
+    sku_ids:list[int]=Field(default_factory=list,max_length=200)
     payment_terms:str=Field(default='',max_length=500)
     service_terms:str=Field(default='',max_length=20000)
     notes:str=Field(default='',max_length=5000)
@@ -50,6 +52,10 @@ class Contract(BaseModel):
         if self.kind in ('goods','mixed') and not self.prices:raise ValueError('商品合同必须填写协议价格')
         if self.kind in ('service','mixed') and not self.service_terms:raise ValueError('服务合同必须填写服务框架条款')
         if len(set(self.customer_ids))!=len(self.customer_ids):raise ValueError('客户不能重复')
+        # Compatibility for existing integrations: priced items define a precise SKU scope.
+        if not self.category_ids and not self.sku_ids and self.prices:self.sku_ids=sorted({x.material_id for x in self.prices})
+        if not self.category_ids and not self.sku_ids:raise ValueError('请选择适用产品分类或SKU，服务合同也需要明确产品范围')
+        if len(set(self.category_ids))!=len(self.category_ids) or len(set(self.sku_ids))!=len(self.sku_ids):raise ValueError('产品分类或SKU不能重复')
         return self
 
 class Revision(Contract):version:int=Field(gt=0)
@@ -78,14 +84,37 @@ def check_scope(c,p):
     mids={x.material_id for x in p.prices}
     valid=set(c.execute(select(s.material_org.c.material_id).join(s.material,s.material.c.id==s.material_org.c.material_id).where(s.material_org.c.company_id==p.company_id,s.material_org.c.material_id.in_(mids),s.material.c.kind=='product')).scalars())
     if mids!=valid:raise HTTPException(422,'协议价格仅支持当前法人的销售成品物料')
+    covered=product_scope(c,p.company_id,p.category_ids,p.sku_ids)
+    if not mids.issubset(covered):raise HTTPException(422,'价格明细包含适用产品范围以外的SKU')
+
+def product_scope(c,company_id,category_ids,sku_ids):
+    categories={r.id:dict(r._mapping) for r in c.execute(select(s.material_category))}
+    products=list(c.execute(select(s.material.c.id,s.material.c.category_id).join(s.material_org,s.material_org.c.material_id==s.material.c.id).where(s.material_org.c.company_id==company_id,s.material.c.kind=='product')))
+    valid_skus={r.id for r in products}
+    if not set(sku_ids).issubset(valid_skus):raise HTTPException(422,'适用SKU未分配给当前法人或不是销售成品')
+    def matches(cat,selected):
+        seen=set()
+        while cat in categories and cat not in seen:
+            if cat==selected:return True
+            seen.add(cat);cat=categories[cat]['parent_id']
+        return False
+    covered=set(sku_ids)
+    for cat in category_ids:
+        ids={r.id for r in products if matches(r.category_id,cat)}
+        if not ids:raise HTTPException(422,'适用分类不存在或当前法人在该分类下没有销售商品')
+        covered.update(ids)
+    if not covered:raise HTTPException(422,'合同缺少适用产品范围')
+    return covered
 
 def header(p):
-    v=p.model_dump(exclude={'customer_ids','prices','version'})
+    v=p.model_dump(exclude={'customer_ids','prices','version','category_ids','sku_ids'})
     for key in ('signed_on','valid_from','valid_to'):v[key]=v[key].isoformat()
     return v
 
 def children(c,id,p):
     c.execute(s.contract_customer.insert(),[dict(contract_id=id,partner_id=x) for x in p.customer_ids])
+    if p.category_ids:c.execute(s.contract_category.insert(),[dict(contract_id=id,category_id=x) for x in p.category_ids])
+    if p.sku_ids:c.execute(s.contract_sku.insert(),[dict(contract_id=id,material_id=x) for x in p.sku_ids])
     if p.prices:
         c.execute(s.contract_price.insert(),[dict(contract_id=id,line_no=i+1,material_id=x.material_id,
             unit_price_cents=int(x.unit_price*100),min_qty=x.min_qty,max_qty=x.max_qty,tax_rate=x.tax_rate,
@@ -101,6 +130,7 @@ def options(user:User,company_id:int):
     with engine.connect() as c:
         def rows(query):return [dict(x) for x in c.execute(query).mappings()]
         return dict(organizations=rows(select(s.organization).where(s.organization.c.company_id==company_id)),
+            categories=rows(select(s.material_category).order_by(s.material_category.c.level,s.material_category.c.id)),
             salespeople=rows(select(s.employee).where(s.employee.c.company_id==company_id)),
             customers=rows(select(s.partner.c.id,s.partner.c.name).join(s.partner_role,s.partner_role.c.partner_id==s.partner.c.id).where(s.partner_role.c.company_id==company_id,s.partner_role.c.role=='customer',or_(s.partner.c.related_company_id.is_(None),s.partner.c.related_company_id!=company_id))),
             materials=rows(select(s.material,s.uom.c.name.label('unit')).join(s.material_org,s.material_org.c.material_id==s.material.c.id).join(s.uom).where(s.material_org.c.company_id==company_id,s.material.c.kind=='product')),
@@ -139,7 +169,7 @@ def detail(id:int,user:User):
         for f in files:f.pop('object_key');f.pop('sha256')
         owner=c.execute(select(s.app_user.c.name).where(s.app_user.c.id==row['owner_id'])).scalar()
         events=[dict(x) for x in c.execute(select(s.contract_event,s.app_user.c.name.label('actor_name')).join(s.app_user,s.app_user.c.id==s.contract_event.c.actor_id).where(s.contract_event.c.contract_id==id).order_by(s.contract_event.c.id)).mappings()]
-        return dict(contract=dict(row),owner_name=owner,customer_ids=[x['partner_id'] for x in rows(s.contract_customer)],prices=rows(s.contract_price),attachments=files,events=events,can_edit=user['grants'][row['company_id']]!='viewer' and (row['owner_id']==user['id'] or user['grants'][row['company_id']]=='admin'))
+        return dict(contract=dict(row),owner_name=owner,customer_ids=[x['partner_id'] for x in rows(s.contract_customer)],category_ids=[x['category_id'] for x in rows(s.contract_category)],sku_ids=[x['material_id'] for x in rows(s.contract_sku)],prices=rows(s.contract_price),attachments=list(reversed(files)),events=events,can_edit=user['grants'][row['company_id']]!='viewer' and (row['owner_id']==user['id'] or user['grants'][row['company_id']]=='admin'))
 
 @router.put('/{id}')
 def edit(id:int,p:Revision,user:User):
@@ -151,6 +181,8 @@ def edit(id:int,p:Revision,user:User):
             check_scope(c,p);claim(c,row,p.version,**header(p))
             c.execute(s.contract_customer.delete().where(s.contract_customer.c.contract_id==id))
             c.execute(s.contract_price.delete().where(s.contract_price.c.contract_id==id))
+            c.execute(s.contract_category.delete().where(s.contract_category.c.contract_id==id))
+            c.execute(s.contract_sku.delete().where(s.contract_sku.c.contract_id==id))
             children(c,id,p);log_event(c,id,user,'edit')
     except IntegrityError:raise HTTPException(409,'合同编号已存在') from None
     return dict(id=id,version=p.version+1)
@@ -166,15 +198,21 @@ def action(id:int,p:Action,user:User):
         if row['status'] not in states:raise HTTPException(409,'当前合同状态不能执行该操作')
         if p.action in ('reject','terminate') and not p.note.strip():raise HTTPException(422,'请填写退回或终止原因')
         if p.action=='submit' and not c.execute(select(s.contract_attachment.c.id).where(s.contract_attachment.c.contract_id==id)).first():raise HTTPException(422,'请先上传至少一份合同附件')
+        if p.action=='submit':
+            cats=list(c.execute(select(s.contract_category.c.category_id).where(s.contract_category.c.contract_id==id)).scalars())
+            skus=list(c.execute(select(s.contract_sku.c.material_id).where(s.contract_sku.c.contract_id==id)).scalars())
+            covered=product_scope(c,row['company_id'],cats,skus)
+            prices=set(c.execute(select(s.contract_price.c.material_id).where(s.contract_price.c.contract_id==id)).scalars())
+            if not prices.issubset(covered):raise HTTPException(422,'价格明细超出合同适用范围')
         claim(c,row,p.version,status=target);log_event(c,id,user,p.action,p.note)
     return dict(id=id,status=target,version=p.version+1)
 
 @router.post('/{id}/attachments',status_code=201)
-async def upload(id:int,request:Request,user:User,filename:str,version:int=Query(...,gt=0)):
+async def upload(id:int,request:Request,user:User,filename:str,version:int=Query(...,gt=0),supplement:bool=False):
     # Authorize before accepting a body; cap streamed bytes even without Content-Length.
     with engine.connect() as c:
         row=get_contract(c,id,user,write=True)
-        if row['status'] not in ('draft','rejected'):raise HTTPException(409,'仅草稿或退回合同可上传附件')
+        if row['status'] not in ('draft','rejected') and not (supplement and user['grants'][row['company_id']]=='admin'):raise HTTPException(409,'仅草稿或退回合同可上传；已提交合同需由管理员补充附件')
         if row['version']!=version:raise HTTPException(409,'合同已被修改，请刷新后重试')
     data=bytearray()
     async for chunk in request.stream():
@@ -186,12 +224,12 @@ async def upload(id:int,request:Request,user:User,filename:str,version:int=Query
     try:
         with engine.begin() as c:
             row=get_contract(c,id,user,write=True)
-            if row['status'] not in ('draft','rejected'):raise HTTPException(409,'合同状态已变更，请刷新')
+            if row['status'] not in ('draft','rejected') and not (supplement and user['grants'][row['company_id']]=='admin'):raise HTTPException(409,'合同状态已变更，请刷新')
             claim(c,row,version)
             count=c.execute(select(func.count()).select_from(s.contract_attachment).where(s.contract_attachment.c.contract_id==id)).scalar()
             if count>=20:raise HTTPException(422,'每份合同最多 20 个附件')
             fid=c.execute(s.contract_attachment.insert().values(contract_id=id,object_key=object_key,filename=filename,content_type=content_type,size_bytes=len(data),sha256=hashlib.sha256(data).hexdigest(),uploaded_by=user['id'],created_at=now())).inserted_primary_key[0]
-            log_event(c,id,user,'upload',filename)
+            log_event(c,id,user,'supplement' if supplement else 'upload',filename+('；补充附件，不替代原签署文件，不变更审核状态' if supplement else ''))
     except Exception:
         try:storage.remove(object_key)
         except Exception:logging.getLogger('erp').warning('Contract upload compensation failed; check storage for orphan object')

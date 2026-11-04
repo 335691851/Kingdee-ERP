@@ -153,3 +153,37 @@ def test_remove_attachment_and_missing_file_is_not_downloadable(env):
     assert r.status_code==200 and r.json()['storage_cleaned']
     assert c.get(f'/api/contracts/{id}/attachments/{f}/download').status_code==404
     assert act(c,id,'submit',3).status_code==422
+
+def test_explicit_category_and_service_sku_scope(env):
+    c,_,_=env
+    p=deepcopy(PAYLOAD);p.update(category_ids=[1],sku_ids=[])
+    id=new(c,p);d=c.get(f'/api/contracts/{id}').json()
+    assert d['category_ids']==[1] and d['sku_ids']==[]
+    p.update(contract_no='SERVICE-SKU',kind='service',prices=[],category_ids=[],sku_ids=[1])
+    id=new(c,p);assert c.get(f'/api/contracts/{id}').json()['sku_ids']==[1]
+    p.update(contract_no='NO-SCOPE',sku_ids=[])
+    assert c.post('/api/contracts',json=p,headers=HEAD).status_code==422
+    p.update(contract_no='BAD-SCOPE',category_ids=[999])
+    assert c.post('/api/contracts',json=p,headers=HEAD).status_code==422
+
+def test_prices_cannot_escape_selected_sku_scope(env):
+    c,_,db=env
+    with db.begin() as con:
+        con.execute(s.material_category.insert().values(id=2,name='非食用盐',code='NONFOOD',level=1))
+        m=dict(con.execute(select(s.material).where(s.material.c.id==1)).mappings().one());m.update(id=2,code='SKU-2',category_id=2)
+        con.execute(s.material.insert().values(**m));con.execute(s.material_org.insert().values(material_id=2,company_id=1))
+    p=deepcopy(PAYLOAD);p.update(sku_ids=[2])
+    assert c.post('/api/contracts',json=p,headers=HEAD).status_code==422
+
+def test_admin_supplement_preserves_approved_contract_and_original_file(env):
+    c,actor,_=env;id=new(c);original=attach(c,id).json()['id']
+    assert act(c,id,'submit',2).status_code==200
+    actor['grants'][1]='admin';assert act(c,id,'approve',3).status_code==200
+    actor['grants'][1]='operator'
+    url=f'/api/contracts/{id}/attachments?filename=supplement.pdf&version=4&supplement=true'
+    assert c.post(url,content=PDF,headers=HEAD).status_code==409
+    actor['grants'][1]='admin';r=c.post(url,content=PDF,headers=HEAD);assert r.status_code==201,r.text
+    d=c.get(f'/api/contracts/{id}').json()
+    assert d['contract']['status']=='approved' and len(d['attachments'])==2
+    assert c.get(f'/api/contracts/{id}/attachments/{original}/download').content==PDF
+    assert d['events'][-1]['action']=='supplement'

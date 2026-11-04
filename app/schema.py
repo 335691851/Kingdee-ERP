@@ -77,3 +77,7 @@ contract_attachment=table('contract_attachment',field('contract_id',Integer,'sal
     field('size_bytes',Integer),field('sha256',String(64)),field('uploaded_by',Integer,'app_user.id'),field('created_at'))
 contract_event=table('contract_event',field('contract_id',Integer,'sales_contract.id',index=True),
     field('actor_id',Integer,'app_user.id'),field('action'),field('note',String(1000)),field('created_at'))
+contract_category=table('contract_category',field('contract_id',Integer,'sales_contract.id',index=True),
+    field('category_id',Integer,'material_category.id'),extra=[UniqueConstraint('contract_id','category_id')])
+contract_sku=table('contract_sku',field('contract_id',Integer,'sales_contract.id',index=True),
+    field('material_id',Integer,'material.id'),extra=[UniqueConstraint('contract_id','material_id')])

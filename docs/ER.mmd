@@ -248,6 +248,11 @@ erDiagram
         INTEGER uploaded_by FK
         VARCHAR_120 created_at
     }
+    contract_category {
+        INTEGER id PK
+        INTEGER contract_id FK
+        INTEGER category_id FK
+    }
     contract_customer {
         INTEGER id PK
         INTEGER contract_id FK
@@ -272,6 +277,11 @@ erDiagram
         NUMERIC_8__6 tax_rate
         BOOLEAN includes_tax
         VARCHAR_500 remark
+    }
+    contract_sku {
+        INTEGER id PK
+        INTEGER contract_id FK
+        INTEGER material_id FK
     }
     cost_calculation {
         INTEGER id PK
@@ -451,12 +461,16 @@ erDiagram
     document ||--o{ audit_event : "document_id"
     sales_contract ||--o{ contract_attachment : "contract_id"
     app_user ||--o{ contract_attachment : "uploaded_by"
+    material_category ||--o{ contract_category : "category_id"
+    sales_contract ||--o{ contract_category : "contract_id"
     sales_contract ||--o{ contract_customer : "contract_id"
     partner ||--o{ contract_customer : "partner_id"
     app_user ||--o{ contract_event : "actor_id"
     sales_contract ||--o{ contract_event : "contract_id"
     sales_contract ||--o{ contract_price : "contract_id"
     material ||--o{ contract_price : "material_id"
+    sales_contract ||--o{ contract_sku : "contract_id"
+    material ||--o{ contract_sku : "material_id"
     company ||--o{ cost_calculation : "company_id"
     material ||--o{ cost_calculation : "material_id"
     document ||--o{ cost_calculation : "production_id"
