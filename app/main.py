@@ -12,7 +12,7 @@ from sqlalchemy import select,func,or_,and_,update
 from .db import engine,PRODUCTION
 from . import schema as s
 from .catalog import REGISTRY,MODULES
-from .auth import current_user,authorize,token_for_demo,AUTH_MODE
+from .auth import current_user,authorize,token_for_demo,AUTH_MODE,login_email
 from .services import get_doc,create_document,transition,settle,now,audit,money
 
 log=logging.getLogger('erp')
@@ -80,7 +80,7 @@ def login(payload:Login,response:Response):
     else:
         url=os.getenv('SUPABASE_URL','').rstrip('/');key=os.getenv('SUPABASE_PUBLISHABLE_KEY','')
         if not url or not key:raise HTTPException(503,'尚未配置 Supabase Auth')
-        try:r=httpx.post(url+'/auth/v1/token?grant_type=password',headers={'apikey':key},json={'email':payload.username,'password':payload.password},timeout=15)
+        try:r=httpx.post(url+'/auth/v1/token?grant_type=password',headers={'apikey':key},json={'email':login_email(payload.username),'password':payload.password},timeout=15)
         except httpx.HTTPError:raise HTTPException(503,'登录服务暂不可用')
         if r.status_code!=200:raise HTTPException(401,'邮箱或密码错误')
         token=r.json()['access_token']

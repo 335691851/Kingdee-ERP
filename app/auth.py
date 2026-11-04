@@ -8,6 +8,12 @@ from . import schema as s
 AUTH_MODE=os.getenv('AUTH_MODE','demo')
 SECRET=os.getenv('SESSION_SECRET') or (secrets.token_urlsafe(48) if not PRODUCTION else '')
 if PRODUCTION and AUTH_MODE!='supabase': raise RuntimeError('Production AUTH_MODE must be supabase')
+
+def login_email(username):
+    value=username.strip()
+    # Optional bootstrap username alias. Passwords are always verified by Supabase.
+    if value=='admin':return os.getenv('ERP_ADMIN_EMAIL','').strip() or value
+    return value
 def token_for_demo(username,password):
     if AUTH_MODE!='demo' or PRODUCTION: raise HTTPException(400,'当前部署使用 Supabase 登录')
     if not (hmac.compare_digest(username,os.getenv('DEMO_USERNAME','admin')) and hmac.compare_digest(password,os.getenv('DEMO_PASSWORD','luyan-demo-2026'))):
