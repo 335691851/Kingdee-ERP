@@ -15,6 +15,9 @@ dependencies = [
 [tool.vercel]
 entrypoint = "app.main:app"
 
+[tool.vercel.scripts]
+build = "python scripts/cloud_bootstrap.py"
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]

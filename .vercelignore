@@ -5,7 +5,6 @@ __pycache__
 work
 outputs
 tests
-scripts
 docs
 supabase
 .env.local

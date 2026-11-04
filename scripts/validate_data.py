@@ -34,6 +34,7 @@ def validate(minimum=10000):
         errors['minimum_history_per_document_type']=sum(counts.get(t,0)<minimum for t in REGISTRY)
         errors['minimum_cost_calculations']=int(tables['cost_calculation']<minimum)
         if engine.dialect.name=='sqlite':errors['foreign_key_errors']=len(c.exec_driver_sql('PRAGMA foreign_key_check').all())
+        else:errors['foreign_key_errors']=c.execute(text("SELECT count(*) FROM pg_constraint c JOIN pg_class t ON t.oid=c.conrelid JOIN pg_namespace n ON n.oid=t.relnamespace WHERE n.nspname='public' AND c.contype='f' AND NOT c.convalidated")).scalar()
         classes=[dict(r) for r in c.execute(text('''SELECT p.name level1,c.name level2,COUNT(m.id) material_count FROM material_category c JOIN material_category p ON c.parent_id=p.id LEFT JOIN material m ON m.category_id=c.id WHERE c.level=2 GROUP BY p.name,c.name ORDER BY p.name,c.name''')).mappings()]
         coverage=[dict(r) for r in c.execute(text('''SELECT c.id,c.name,COUNT(DISTINCT d.id) sales_documents FROM material_category c LEFT JOIN material m ON m.category_id=c.id LEFT JOIN document_line l ON l.material_id=m.id LEFT JOIN document d ON d.id=l.document_id AND d.type_code='sales_outbound' WHERE c.id IN (11,12,21,22,23,24,25) GROUP BY c.id,c.name ORDER BY c.id''')).mappings()]
         if minimum>=10000:errors['seven_photo_varieties_have_history']=sum(r['sales_documents']==0 for r in coverage)
