@@ -1,0 +1,2501 @@
+[
+  {
+    "p": 120,
+    "q": 30,
+    "r": 20,
+    "gap": 0,
+    "lot_id": 45397,
+    "passed": true,
+    "expected": {
+      "p": 120,
+      "q": 30,
+      "r": 20,
+      "id": "C01",
+      "cid": 7,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 120,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300025,
+        "qty": 130,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C01-IN",
+        "line_id": 469271,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300026,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C01-OUT",
+        "line_id": 469272,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300027,
+        "qty": 30,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C01-SO",
+        "line_id": 469273,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 120,
+        "reserved_qty": 20,
+        "warehouse_id": 20
+      }
+    ],
+    "material_id": 38,
+    "scenario_id": "C01",
+    "source_refs": "联调模拟＋C01;单据前缀SIM-AIP-C01;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": 100,
+    "material_code": "SIM-AIP-C01",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 80,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45398,
+    "passed": true,
+    "expected": {
+      "p": 80,
+      "q": 0,
+      "r": 0,
+      "id": "C02",
+      "cid": 8,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 80,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300028,
+        "qty": 90,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C02-IN",
+        "line_id": 469274,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300029,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C02-OUT",
+        "line_id": 469275,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 8,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 80,
+        "reserved_qty": 0,
+        "warehouse_id": 23
+      }
+    ],
+    "material_id": 39,
+    "scenario_id": "C02",
+    "source_refs": "联调模拟＋C02;单据前缀SIM-AIP-C02;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-C02",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 55,
+    "q": 20,
+    "r": 5,
+    "gap": 0,
+    "lot_id": 45399,
+    "passed": true,
+    "expected": {
+      "p": 55,
+      "q": 20,
+      "r": 5,
+      "id": "C03",
+      "cid": 6,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 55,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300030,
+        "qty": 65,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C03-IN",
+        "line_id": 469276,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300031,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C03-OUT",
+        "line_id": 469277,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300032,
+        "qty": 20,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C03-SO",
+        "line_id": 469278,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 6,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 55,
+        "reserved_qty": 5,
+        "warehouse_id": 17
+      }
+    ],
+    "material_id": 40,
+    "scenario_id": "C03",
+    "source_refs": "联调模拟＋C03;单据前缀SIM-AIP-C03;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": 75,
+    "material_code": "SIM-AIP-C03",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 500,
+    "q": 100,
+    "r": 100,
+    "gap": 0,
+    "lot_id": 45400,
+    "passed": true,
+    "expected": {
+      "p": 500,
+      "q": 100,
+      "r": 100,
+      "id": "C04",
+      "cid": 5,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 500,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300033,
+        "qty": 510,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C04-IN",
+        "line_id": 469279,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300034,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C04-OUT",
+        "line_id": 469280,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300035,
+        "qty": 100,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C04-SO",
+        "line_id": 469281,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 5,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 500,
+        "reserved_qty": 100,
+        "warehouse_id": 14
+      }
+    ],
+    "material_id": 41,
+    "scenario_id": "C04",
+    "source_refs": "联调模拟＋C04;单据前缀SIM-AIP-C04;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": 120,
+    "material_code": "SIM-AIP-C04",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 150,
+    "q": 50,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45401,
+    "passed": true,
+    "expected": {
+      "p": 150,
+      "q": 50,
+      "r": 0,
+      "id": "C05",
+      "cid": 4,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 150,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300036,
+        "qty": 160,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C05-IN",
+        "line_id": 469282,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300037,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C05-OUT",
+        "line_id": 469283,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300038,
+        "qty": 50,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C05-SO",
+        "line_id": 469284,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 4,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 150,
+        "reserved_qty": 0,
+        "warehouse_id": 11
+      }
+    ],
+    "material_id": 42,
+    "scenario_id": "C05",
+    "source_refs": "联调模拟＋C05;单据前缀SIM-AIP-C05;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": 90,
+    "material_code": "SIM-AIP-C05",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 12,
+    "q": 1,
+    "r": 2,
+    "gap": 0,
+    "lot_id": 45402,
+    "passed": true,
+    "expected": {
+      "p": 12,
+      "q": 1,
+      "r": 2,
+      "id": "C06",
+      "cid": 12,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 12,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300039,
+        "qty": 22,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C06-IN",
+        "line_id": 469285,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300040,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C06-OUT",
+        "line_id": 469286,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300041,
+        "qty": 1,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C06-SO",
+        "line_id": 469287,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 12,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 12,
+        "reserved_qty": 2,
+        "warehouse_id": 35
+      }
+    ],
+    "material_id": 43,
+    "scenario_id": "C06",
+    "source_refs": "联调模拟＋C06;单据前缀SIM-AIP-C06;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": 300,
+    "material_code": "SIM-AIP-C06",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 120,
+    "q": 50,
+    "r": 20,
+    "gap": 0,
+    "lot_id": 45403,
+    "passed": true,
+    "expected": {
+      "p": 120,
+      "q": 50,
+      "r": 20,
+      "id": "C07",
+      "cid": 7,
+      "hit": false
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 120,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300042,
+        "qty": 130,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C07-IN",
+        "line_id": 469288,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300043,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C07-OUT",
+        "line_id": 469289,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300044,
+        "qty": 50,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C07-SO",
+        "line_id": 469290,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 120,
+        "reserved_qty": 20,
+        "warehouse_id": 20
+      }
+    ],
+    "material_id": 44,
+    "scenario_id": "C07",
+    "source_refs": "联调模拟＋C07;单据前缀SIM-AIP-C07;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": 60,
+    "material_code": "SIM-AIP-C07",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 35,
+    "q": 20,
+    "r": 5,
+    "gap": 0,
+    "lot_id": 45404,
+    "passed": true,
+    "expected": {
+      "p": 35,
+      "q": 20,
+      "r": 5,
+      "id": "C08",
+      "cid": 8,
+      "hit": false
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 35,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300045,
+        "qty": 45,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C08-IN",
+        "line_id": 469291,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300046,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C08-OUT",
+        "line_id": 469292,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300047,
+        "qty": 20,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C08-SO",
+        "line_id": 469293,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 8,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 35,
+        "reserved_qty": 5,
+        "warehouse_id": 23
+      }
+    ],
+    "material_id": 45,
+    "scenario_id": "C08",
+    "source_refs": "联调模拟＋C08;单据前缀SIM-AIP-C08;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": 45,
+    "material_code": "SIM-AIP-C08",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 20,
+    "q": 0,
+    "r": 20,
+    "gap": 0,
+    "lot_id": 45405,
+    "passed": true,
+    "expected": {
+      "p": 20,
+      "q": 0,
+      "r": 20,
+      "id": "C09",
+      "cid": 6,
+      "hit": false
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 20,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300048,
+        "qty": 30,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C09-IN",
+        "line_id": 469294,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300049,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C09-OUT",
+        "line_id": 469295,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 6,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 20,
+        "reserved_qty": 20,
+        "warehouse_id": 17
+      }
+    ],
+    "material_id": 46,
+    "scenario_id": "C09",
+    "source_refs": "联调模拟＋C09;单据前缀SIM-AIP-C09;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-C09",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 100,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45414,
+    "passed": true,
+    "expected": {
+      "p": 100,
+      "q": 50,
+      "r": 0,
+      "id": "C10",
+      "st": "approved",
+      "cid": 7,
+      "hit": true,
+      "offset": 0
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 100,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300073,
+        "qty": 110,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C10-IN",
+        "line_id": 469319,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300074,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C10-OUT",
+        "line_id": 469320,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300075,
+        "qty": 50,
+        "date": "2026-11-05",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C10-SO",
+        "line_id": 469321,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 100,
+        "reserved_qty": 0,
+        "warehouse_id": 20
+      }
+    ],
+    "material_id": 55,
+    "scenario_id": "C10",
+    "source_refs": "联调模拟＋C10;单据前缀SIM-AIP-C10;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-C10",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 100,
+    "q": 50,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45415,
+    "passed": true,
+    "expected": {
+      "p": 100,
+      "q": 50,
+      "r": 0,
+      "id": "C11",
+      "st": "approved",
+      "cid": 7,
+      "hit": false,
+      "offset": 30
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 100,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300076,
+        "qty": 110,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C11-IN",
+        "line_id": 469322,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300077,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C11-OUT",
+        "line_id": 469323,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300078,
+        "qty": 50,
+        "date": "2026-10-06",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C11-SO",
+        "line_id": 469324,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 100,
+        "reserved_qty": 0,
+        "warehouse_id": 20
+      }
+    ],
+    "material_id": 56,
+    "scenario_id": "C11",
+    "source_refs": "联调模拟＋C11;单据前缀SIM-AIP-C11;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": 60,
+    "material_code": "SIM-AIP-C11",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 100,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45416,
+    "passed": true,
+    "expected": {
+      "p": 100,
+      "q": 50,
+      "r": 0,
+      "id": "C12",
+      "st": "approved",
+      "cid": 7,
+      "hit": true,
+      "offset": 31
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 100,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300079,
+        "qty": 110,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C12-IN",
+        "line_id": 469325,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300080,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C12-OUT",
+        "line_id": 469326,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300081,
+        "qty": 50,
+        "date": "2026-10-05",
+        "status": "approved",
+        "bill_no": "SIM-AIP-C12-SO",
+        "line_id": 469327,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 100,
+        "reserved_qty": 0,
+        "warehouse_id": 20
+      }
+    ],
+    "material_id": 57,
+    "scenario_id": "C12",
+    "source_refs": "联调模拟＋C12;单据前缀SIM-AIP-C12;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-C12",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 100,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45417,
+    "passed": true,
+    "expected": {
+      "p": 100,
+      "q": 50,
+      "r": 0,
+      "id": "C13",
+      "st": "draft",
+      "cid": 7,
+      "hit": true,
+      "offset": 1
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 100,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300082,
+        "qty": 110,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C13-IN",
+        "line_id": 469328,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300083,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-C13-OUT",
+        "line_id": 469329,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300084,
+        "qty": 50,
+        "date": "2026-11-04",
+        "status": "draft",
+        "bill_no": "SIM-AIP-C13-SO",
+        "line_id": 469330,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 100,
+        "reserved_qty": 0,
+        "warehouse_id": 20
+      }
+    ],
+    "material_id": 58,
+    "scenario_id": "C13",
+    "source_refs": "联调模拟＋C13;单据前缀SIM-AIP-C13;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-C13",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 20,
+    "q": 100,
+    "r": 0,
+    "gap": 50,
+    "lot_id": 45406,
+    "passed": true,
+    "expected": {
+      "m": 25,
+      "p": 20,
+      "q": 100,
+      "r": 0,
+      "s": 10,
+      "t": 15,
+      "id": "R01",
+      "cap": 80,
+      "cid": 5,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 20,
+    "plan_end": "2026-11-19",
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300050,
+        "qty": 30,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R01-IN",
+        "line_id": 469296,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300051,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R01-OUT",
+        "line_id": 469297,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300052,
+        "qty": 100,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R01-SO",
+        "line_id": 469298,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300085,
+        "qty": 15,
+        "date": "2026-11-05",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R01-TR",
+        "line_id": 469331,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300086,
+        "qty": 25,
+        "date": "2026-11-05",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R01-MO",
+        "line_id": 469332,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 5,
+    "demand_qty": 100,
+    "plan_start": "2026-11-05",
+    "safety_qty": 10,
+    "warehouses": [
+      {
+        "qty": 20,
+        "reserved_qty": 0,
+        "warehouse_id": 14
+      }
+    ],
+    "material_id": 47,
+    "scenario_id": "R01",
+    "source_refs": "联调模拟＋R01;单据前缀SIM-AIP-R01;吨制;v1",
+    "capacity_qty": 80,
+    "is_simulated": true,
+    "plan_sources": "联调模拟＋R01;供货工厂=5;原型BOM=2;预留与净需求去重;v1;来源记录=ai_restock_source/R01;订单行=469298;在途=SIM-AIP-R01-TR;排产=SIM-AIP-R01-MO;安全批准=SIM-AIP-R01-SAFE-模拟批准;产能=SIM-AIP-R01-CAP-模拟能力;口径v1",
+    "available_qty": 20,
+    "coverage_days": 6,
+    "material_code": "SIM-AIP-R01",
+    "scheduled_qty": 25,
+    "snapshot_date": "2026-11-05",
+    "suggested_qty": 50,
+    "in_transit_qty": 15,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 20,
+    "q": 100,
+    "r": 0,
+    "gap": 50,
+    "lot_id": 45407,
+    "passed": true,
+    "expected": {
+      "m": 25,
+      "p": 20,
+      "q": 100,
+      "r": 0,
+      "s": 10,
+      "t": 15,
+      "id": "R02",
+      "cap": 40,
+      "cid": 4,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 20,
+    "plan_end": "2026-11-19",
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300053,
+        "qty": 30,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R02-IN",
+        "line_id": 469299,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300054,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R02-OUT",
+        "line_id": 469300,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300055,
+        "qty": 100,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R02-SO",
+        "line_id": 469301,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300087,
+        "qty": 15,
+        "date": "2026-11-05",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R02-TR",
+        "line_id": 469333,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300088,
+        "qty": 25,
+        "date": "2026-11-05",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R02-MO",
+        "line_id": 469334,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 4,
+    "demand_qty": 100,
+    "plan_start": "2026-11-05",
+    "safety_qty": 10,
+    "warehouses": [
+      {
+        "qty": 20,
+        "reserved_qty": 0,
+        "warehouse_id": 11
+      }
+    ],
+    "material_id": 48,
+    "scenario_id": "R02",
+    "source_refs": "联调模拟＋R02;单据前缀SIM-AIP-R02;吨制;v1",
+    "capacity_qty": 40,
+    "is_simulated": true,
+    "plan_sources": "联调模拟＋R02;供货工厂=4;原型BOM=3;预留与净需求去重;v1;来源记录=ai_restock_source/R02;订单行=469301;在途=SIM-AIP-R02-TR;排产=SIM-AIP-R02-MO;安全批准=SIM-AIP-R02-SAFE-模拟批准;产能=SIM-AIP-R02-CAP-模拟能力;口径v1",
+    "available_qty": 20,
+    "coverage_days": 6,
+    "material_code": "SIM-AIP-R02",
+    "scheduled_qty": 25,
+    "snapshot_date": "2026-11-05",
+    "suggested_qty": 40,
+    "in_transit_qty": 15,
+    "coordination_qty": 10,
+    "source_material_id": 3
+  },
+  {
+    "p": 10,
+    "q": 60,
+    "r": 0,
+    "gap": 50,
+    "lot_id": 45408,
+    "passed": true,
+    "expected": {
+      "m": 0,
+      "p": 10,
+      "q": 60,
+      "r": 0,
+      "s": 0,
+      "t": 0,
+      "id": "R03",
+      "cap": 0,
+      "cid": 5,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 10,
+    "plan_end": "2026-11-19",
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300056,
+        "qty": 20,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R03-IN",
+        "line_id": 469302,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300057,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R03-OUT",
+        "line_id": 469303,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300058,
+        "qty": 60,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R03-SO",
+        "line_id": 469304,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 5,
+    "demand_qty": 60,
+    "plan_start": "2026-11-05",
+    "safety_qty": 0,
+    "warehouses": [
+      {
+        "qty": 10,
+        "reserved_qty": 0,
+        "warehouse_id": 14
+      }
+    ],
+    "material_id": 49,
+    "scenario_id": "R03",
+    "source_refs": "联调模拟＋R03;单据前缀SIM-AIP-R03;吨制;v1",
+    "capacity_qty": 0,
+    "is_simulated": true,
+    "plan_sources": "联调模拟＋R03;供货工厂=5;原型BOM=1;预留与净需求去重;v1;来源记录=ai_restock_source/R03;订单行=469304;在途=SIM-AIP-R03-TR;排产=SIM-AIP-R03-MO;安全批准=SIM-AIP-R03-SAFE-模拟批准;产能=SIM-AIP-R03-CAP-模拟能力;口径v1",
+    "available_qty": 10,
+    "coverage_days": 5,
+    "material_code": "SIM-AIP-R03",
+    "scheduled_qty": 0,
+    "snapshot_date": "2026-11-05",
+    "suggested_qty": 0,
+    "in_transit_qty": 0,
+    "coordination_qty": 50,
+    "source_material_id": 1
+  },
+  {
+    "p": 5,
+    "q": 0,
+    "r": 0,
+    "gap": 15,
+    "lot_id": 45409,
+    "passed": true,
+    "expected": {
+      "m": 0,
+      "p": 5,
+      "q": 0,
+      "r": 0,
+      "s": 20,
+      "t": 0,
+      "id": "R04",
+      "cap": 30,
+      "cid": 4,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 5,
+    "plan_end": "2026-11-19",
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300059,
+        "qty": 15,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R04-IN",
+        "line_id": 469305,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300060,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R04-OUT",
+        "line_id": 469306,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 4,
+    "demand_qty": 0,
+    "plan_start": "2026-11-05",
+    "safety_qty": 20,
+    "warehouses": [
+      {
+        "qty": 5,
+        "reserved_qty": 0,
+        "warehouse_id": 11
+      }
+    ],
+    "material_id": 50,
+    "scenario_id": "R04",
+    "source_refs": "联调模拟＋R04;单据前缀SIM-AIP-R04;吨制;v1",
+    "capacity_qty": 30,
+    "is_simulated": true,
+    "plan_sources": "联调模拟＋R04;供货工厂=4;原型BOM=2;预留与净需求去重;v1;来源记录=ai_restock_source/R04;订单行=无销售需求;在途=SIM-AIP-R04-TR;排产=SIM-AIP-R04-MO;安全批准=SIM-AIP-R04-SAFE-模拟批准;产能=SIM-AIP-R04-CAP-模拟能力;口径v1",
+    "available_qty": 5,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-R04",
+    "scheduled_qty": 0,
+    "snapshot_date": "2026-11-05",
+    "suggested_qty": 15,
+    "in_transit_qty": 0,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 10,
+    "q": 80,
+    "r": 0,
+    "gap": 45,
+    "lot_id": 45410,
+    "passed": true,
+    "expected": {
+      "m": 10,
+      "p": 10,
+      "q": 80,
+      "r": 0,
+      "s": 5,
+      "t": 20,
+      "id": "R05",
+      "cap": 60,
+      "cid": 5,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 10,
+    "plan_end": "2026-11-19",
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300061,
+        "qty": 20,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R05-IN",
+        "line_id": 469307,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300062,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R05-OUT",
+        "line_id": 469308,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300063,
+        "qty": 80,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R05-SO",
+        "line_id": 469309,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300089,
+        "qty": 20,
+        "date": "2026-11-05",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R05-TR",
+        "line_id": 469335,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300090,
+        "qty": 10,
+        "date": "2026-11-05",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R05-MO",
+        "line_id": 469336,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 5,
+    "demand_qty": 80,
+    "plan_start": "2026-11-05",
+    "safety_qty": 5,
+    "warehouses": [
+      {
+        "qty": 10,
+        "reserved_qty": 0,
+        "warehouse_id": 14
+      }
+    ],
+    "material_id": 51,
+    "scenario_id": "R05",
+    "source_refs": "联调模拟＋R05;单据前缀SIM-AIP-R05;吨制;v1",
+    "capacity_qty": 60,
+    "is_simulated": true,
+    "plan_sources": "联调模拟＋R05;供货工厂=5;原型BOM=3;预留与净需求去重;v1;来源记录=ai_restock_source/R05;订单行=469309;在途=SIM-AIP-R05-TR;排产=SIM-AIP-R05-MO;安全批准=SIM-AIP-R05-SAFE-模拟批准;产能=SIM-AIP-R05-CAP-模拟能力;口径v1",
+    "available_qty": 10,
+    "coverage_days": 3.75,
+    "material_code": "SIM-AIP-R05",
+    "scheduled_qty": 10,
+    "snapshot_date": "2026-11-05",
+    "suggested_qty": 45,
+    "in_transit_qty": 20,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 80,
+    "q": 100,
+    "r": 60,
+    "gap": 20,
+    "lot_id": 45411,
+    "passed": true,
+    "expected": {
+      "m": 0,
+      "p": 80,
+      "q": 40,
+      "r": 60,
+      "s": 0,
+      "t": 0,
+      "id": "R06",
+      "cap": 50,
+      "cid": 4,
+      "hit": true
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 80,
+    "plan_end": "2026-11-19",
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300064,
+        "qty": 90,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R06-IN",
+        "line_id": 469310,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300065,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R06-OUT",
+        "line_id": 469311,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300066,
+        "qty": 100,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R06-SO",
+        "line_id": 469312,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 4,
+    "demand_qty": 40,
+    "plan_start": "2026-11-05",
+    "safety_qty": 0,
+    "warehouses": [
+      {
+        "qty": 80,
+        "reserved_qty": 60,
+        "warehouse_id": 11
+      }
+    ],
+    "material_id": 52,
+    "scenario_id": "R06",
+    "source_refs": "联调模拟＋R06;单据前缀SIM-AIP-R06;吨制;v1",
+    "capacity_qty": 50,
+    "is_simulated": true,
+    "plan_sources": "联调模拟＋R06;供货工厂=4;原型BOM=1;预留与净需求去重;v1;来源记录=ai_restock_source/R06;订单行=469312;在途=SIM-AIP-R06-TR;排产=SIM-AIP-R06-MO;安全批准=SIM-AIP-R06-SAFE-模拟批准;产能=SIM-AIP-R06-CAP-模拟能力;口径v1",
+    "available_qty": 20,
+    "coverage_days": 6,
+    "material_code": "SIM-AIP-R06",
+    "scheduled_qty": 0,
+    "snapshot_date": "2026-11-05",
+    "suggested_qty": 20,
+    "in_transit_qty": 0,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 30,
+    "q": 20,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45412,
+    "passed": true,
+    "expected": {
+      "m": 0,
+      "p": 30,
+      "q": 20,
+      "r": 0,
+      "s": 5,
+      "t": 0,
+      "id": "R07",
+      "cap": 50,
+      "cid": 5,
+      "hit": false
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 30,
+    "plan_end": "2026-11-19",
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300067,
+        "qty": 40,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R07-IN",
+        "line_id": 469313,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300068,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R07-OUT",
+        "line_id": 469314,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300069,
+        "qty": 20,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R07-SO",
+        "line_id": 469315,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 5,
+    "demand_qty": 20,
+    "plan_start": "2026-11-05",
+    "safety_qty": 5,
+    "warehouses": [
+      {
+        "qty": 30,
+        "reserved_qty": 0,
+        "warehouse_id": 14
+      }
+    ],
+    "material_id": 53,
+    "scenario_id": "R07",
+    "source_refs": "联调模拟＋R07;单据前缀SIM-AIP-R07;吨制;v1",
+    "capacity_qty": 50,
+    "is_simulated": true,
+    "plan_sources": "联调模拟＋R07;供货工厂=5;原型BOM=2;预留与净需求去重;v1;来源记录=ai_restock_source/R07;订单行=469315;在途=SIM-AIP-R07-TR;排产=SIM-AIP-R07-MO;安全批准=SIM-AIP-R07-SAFE-模拟批准;产能=SIM-AIP-R07-CAP-模拟能力;口径v1",
+    "available_qty": 30,
+    "coverage_days": 45,
+    "material_code": "SIM-AIP-R07",
+    "scheduled_qty": 0,
+    "snapshot_date": "2026-11-05",
+    "suggested_qty": 0,
+    "in_transit_qty": 0,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 20,
+    "q": 100,
+    "r": 0,
+    "gap": 50,
+    "lot_id": 45413,
+    "passed": true,
+    "expected": {
+      "m": 25,
+      "p": 20,
+      "q": 100,
+      "r": 0,
+      "s": 10,
+      "t": 15,
+      "id": "R08",
+      "cap": 80,
+      "cid": 4,
+      "hit": false
+    },
+    "first_in": "2026-10-31",
+    "flow_qty": 20,
+    "plan_end": "2026-11-19",
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300070,
+        "qty": 30,
+        "date": "2026-10-31",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R08-IN",
+        "line_id": 469316,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300071,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-R08-OUT",
+        "line_id": 469317,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300072,
+        "qty": 100,
+        "date": "2026-11-04",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R08-SO",
+        "line_id": 469318,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300091,
+        "qty": 15,
+        "date": "2026-11-03",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R08-TR",
+        "line_id": 469337,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300092,
+        "qty": 25,
+        "date": "2026-11-03",
+        "status": "approved",
+        "bill_no": "SIM-AIP-R08-MO",
+        "line_id": 469338,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 4,
+    "demand_qty": 100,
+    "plan_start": "2026-11-05",
+    "safety_qty": 10,
+    "warehouses": [
+      {
+        "qty": 20,
+        "reserved_qty": 0,
+        "warehouse_id": 11
+      }
+    ],
+    "material_id": 54,
+    "scenario_id": "R08",
+    "source_refs": "联调模拟＋R08;单据前缀SIM-AIP-R08;吨制;v1",
+    "capacity_qty": 80,
+    "is_simulated": true,
+    "plan_sources": "联调模拟＋R08;供货工厂=4;原型BOM=3;预留与净需求去重;v1;来源记录=ai_restock_source/R08;订单行=469318;在途=SIM-AIP-R08-TR;排产=SIM-AIP-R08-MO;安全批准=SIM-AIP-R08-SAFE-模拟批准;产能=SIM-AIP-R08-CAP-模拟能力;口径v1",
+    "available_qty": 20,
+    "coverage_days": 6,
+    "material_code": "SIM-AIP-R08",
+    "scheduled_qty": 25,
+    "snapshot_date": "2026-11-03",
+    "suggested_qty": 50,
+    "in_transit_qty": 15,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 0.32,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45387,
+    "passed": true,
+    "expected": {
+      "p": 0.32,
+      "r": 0,
+      "id": "T01",
+      "age": 30,
+      "cid": 5,
+      "hit": true,
+      "multi": false
+    },
+    "first_in": "2026-07-06",
+    "flow_qty": 0.32,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300001,
+        "qty": 10.32,
+        "date": "2026-07-06",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T01-IN",
+        "line_id": 469247,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300002,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T01-OUT",
+        "line_id": 469248,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 5,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.32,
+        "reserved_qty": 0,
+        "warehouse_id": 14
+      }
+    ],
+    "material_id": 28,
+    "scenario_id": "T01",
+    "source_refs": "联调模拟＋T01;单据前缀SIM-AIP-T01;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T01",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 0.18,
+    "q": 0,
+    "r": 0.08,
+    "gap": 0,
+    "lot_id": 45388,
+    "passed": true,
+    "expected": {
+      "p": 0.18,
+      "r": 0.08,
+      "id": "T02",
+      "age": 1,
+      "cid": 4,
+      "hit": true,
+      "multi": false
+    },
+    "first_in": "2026-08-04",
+    "flow_qty": 0.18,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300003,
+        "qty": 10.18,
+        "date": "2026-08-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T02-IN",
+        "line_id": 469249,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300004,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T02-OUT",
+        "line_id": 469250,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 4,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.18,
+        "reserved_qty": 0.08,
+        "warehouse_id": 11
+      }
+    ],
+    "material_id": 29,
+    "scenario_id": "T02",
+    "source_refs": "联调模拟＋T02;单据前缀SIM-AIP-T02;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T02",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 0.46,
+    "q": 0,
+    "r": 0.1,
+    "gap": 0,
+    "lot_id": 45389,
+    "passed": true,
+    "expected": {
+      "p": 0.46,
+      "r": 0.1,
+      "id": "T03",
+      "age": 45,
+      "cid": 7,
+      "hit": true,
+      "multi": false
+    },
+    "first_in": "2026-06-21",
+    "flow_qty": 0.46,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300005,
+        "qty": 10.46,
+        "date": "2026-06-21",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T03-IN",
+        "line_id": 469251,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300006,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T03-OUT",
+        "line_id": 469252,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.46,
+        "reserved_qty": 0.1,
+        "warehouse_id": 20
+      }
+    ],
+    "material_id": 30,
+    "scenario_id": "T03",
+    "source_refs": "联调模拟＋T03;单据前缀SIM-AIP-T03;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T03",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 0.09,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45390,
+    "passed": true,
+    "expected": {
+      "p": 0.09,
+      "r": 0,
+      "id": "T04",
+      "age": 15,
+      "cid": 8,
+      "hit": true,
+      "multi": false
+    },
+    "first_in": "2026-07-21",
+    "flow_qty": 0.09,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300007,
+        "qty": 10.09,
+        "date": "2026-07-21",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T04-IN",
+        "line_id": 469253,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300008,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T04-OUT",
+        "line_id": 469254,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 8,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.09,
+        "reserved_qty": 0,
+        "warehouse_id": 23
+      }
+    ],
+    "material_id": 31,
+    "scenario_id": "T04",
+    "source_refs": "联调模拟＋T04;单据前缀SIM-AIP-T04;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T04",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 0.25,
+    "q": 0,
+    "r": 0.25,
+    "gap": 0,
+    "lot_id": 45391,
+    "passed": true,
+    "expected": {
+      "p": 0.25,
+      "r": 0.25,
+      "id": "T05",
+      "age": 60,
+      "cid": 2,
+      "hit": true,
+      "multi": false
+    },
+    "first_in": "2026-06-06",
+    "flow_qty": 0.25,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300009,
+        "qty": 10.25,
+        "date": "2026-06-06",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T05-IN",
+        "line_id": 469255,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300010,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T05-OUT",
+        "line_id": 469256,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 2,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.25,
+        "reserved_qty": 0.25,
+        "warehouse_id": 5
+      }
+    ],
+    "material_id": 32,
+    "scenario_id": "T05",
+    "source_refs": "联调模拟＋T05;单据前缀SIM-AIP-T05;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T05",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 0.4,
+    "q": 0,
+    "r": 0.05,
+    "gap": 0,
+    "lot_id": 45392,
+    "passed": true,
+    "expected": {
+      "p": 0.4,
+      "r": 0.05,
+      "id": "T06",
+      "age": 10,
+      "cid": 7,
+      "hit": true,
+      "multi": true
+    },
+    "first_in": "2026-07-26",
+    "flow_qty": 0.4,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300011,
+        "qty": 6,
+        "date": "2026-07-26",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T06-IN-1",
+        "line_id": 469257,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300012,
+        "qty": 4,
+        "date": "2026-07-26",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T06-IN-2",
+        "line_id": 469258,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300013,
+        "qty": 5.8,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T06-OUT-1",
+        "line_id": 469259,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300014,
+        "qty": 3.8,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T06-OUT-2",
+        "line_id": 469260,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": true,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.2,
+        "reserved_qty": 0.05,
+        "warehouse_id": 20
+      },
+      {
+        "qty": 0.2,
+        "reserved_qty": 0,
+        "warehouse_id": 37
+      }
+    ],
+    "material_id": 33,
+    "scenario_id": "T06",
+    "source_refs": "联调模拟＋T06;单据前缀SIM-AIP-T06;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T06",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 0.32,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45393,
+    "passed": true,
+    "expected": {
+      "p": 0.32,
+      "r": 0,
+      "id": "T07",
+      "age": 0,
+      "cid": 5,
+      "hit": false,
+      "multi": false
+    },
+    "first_in": "2026-08-05",
+    "flow_qty": 0.32,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300015,
+        "qty": 10.32,
+        "date": "2026-08-05",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T07-IN",
+        "line_id": 469261,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300016,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T07-OUT",
+        "line_id": 469262,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 5,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.32,
+        "reserved_qty": 0,
+        "warehouse_id": 14
+      }
+    ],
+    "material_id": 34,
+    "scenario_id": "T07",
+    "source_refs": "联调模拟＋T07;单据前缀SIM-AIP-T07;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T07",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  },
+  {
+    "p": 0.5,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45394,
+    "passed": true,
+    "expected": {
+      "p": 0.5,
+      "r": 0,
+      "id": "T08",
+      "age": 1,
+      "cid": 4,
+      "hit": false,
+      "multi": false
+    },
+    "first_in": "2026-08-04",
+    "flow_qty": 0.5,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300017,
+        "qty": 10.5,
+        "date": "2026-08-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T08-IN",
+        "line_id": 469263,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300018,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T08-OUT",
+        "line_id": 469264,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 4,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.5,
+        "reserved_qty": 0,
+        "warehouse_id": 11
+      }
+    ],
+    "material_id": 35,
+    "scenario_id": "T08",
+    "source_refs": "联调模拟＋T08;单据前缀SIM-AIP-T08;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T08",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 2
+  },
+  {
+    "p": 0,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45395,
+    "passed": true,
+    "expected": {
+      "p": 0,
+      "r": 0,
+      "id": "T09",
+      "age": 1,
+      "cid": 7,
+      "hit": false,
+      "multi": false
+    },
+    "first_in": "2026-08-04",
+    "flow_qty": 0,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300019,
+        "qty": 10,
+        "date": "2026-08-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T09-IN",
+        "line_id": 469265,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300020,
+        "qty": 10,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T09-OUT",
+        "line_id": 469266,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 7,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0,
+        "reserved_qty": 0,
+        "warehouse_id": 20
+      }
+    ],
+    "material_id": 36,
+    "scenario_id": "T09",
+    "source_refs": "联调模拟＋T09;单据前缀SIM-AIP-T09;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T09",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 3
+  },
+  {
+    "p": 0.6,
+    "q": 0,
+    "r": 0,
+    "gap": 0,
+    "lot_id": 45396,
+    "passed": true,
+    "expected": {
+      "p": 0.6,
+      "r": 0,
+      "id": "T10",
+      "age": 1,
+      "cid": 8,
+      "hit": false,
+      "multi": true
+    },
+    "first_in": "2026-08-04",
+    "flow_qty": 0.6,
+    "plan_end": null,
+    "run_date": "2026-11-05",
+    "documents": [
+      {
+        "id": 300021,
+        "qty": 6,
+        "date": "2026-08-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T10-IN-1",
+        "line_id": 469267,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300022,
+        "qty": 4,
+        "date": "2026-08-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T10-IN-2",
+        "line_id": 469268,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300023,
+        "qty": 5.7,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T10-OUT-1",
+        "line_id": 469269,
+        "line_no": 1,
+        "is_simulated": true
+      },
+      {
+        "id": 300024,
+        "qty": 3.7,
+        "date": "2026-11-04",
+        "status": "posted",
+        "bill_no": "SIM-AIP-T10-OUT-2",
+        "line_id": 469270,
+        "line_no": 1,
+        "is_simulated": true
+      }
+    ],
+    "actual_hit": false,
+    "company_id": 8,
+    "demand_qty": null,
+    "plan_start": null,
+    "safety_qty": null,
+    "warehouses": [
+      {
+        "qty": 0.3,
+        "reserved_qty": 0,
+        "warehouse_id": 23
+      },
+      {
+        "qty": 0.3,
+        "reserved_qty": 0,
+        "warehouse_id": 38
+      }
+    ],
+    "material_id": 37,
+    "scenario_id": "T10",
+    "source_refs": "联调模拟＋T10;单据前缀SIM-AIP-T10;吨制;v1",
+    "capacity_qty": null,
+    "is_simulated": true,
+    "plan_sources": null,
+    "available_qty": null,
+    "coverage_days": null,
+    "material_code": "SIM-AIP-T10",
+    "scheduled_qty": null,
+    "snapshot_date": null,
+    "suggested_qty": 0,
+    "in_transit_qty": null,
+    "coordination_qty": 0,
+    "source_material_id": 1
+  }
+]
