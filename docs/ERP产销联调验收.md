@@ -64,7 +64,7 @@ R06 未交100吨减本需求预留60吨，demand_qty=40；实物80减占用60，
 4. supabase/ai_coordination_dynamic_view.sql：最终动态视图。
 5. supabase/ai_coordination_negative_tests.sql：拒绝与隔离验证。
 6. supabase/ai_coordination_acceptance.sql：复核业务数据。
-7. supabase/ai_coordination_readonly.sql：授权草案，本轮按用户要求未执行；并非重复执行脚本。
+7. supabase/ai_coordination_readonly.sql：用户随后明确要求执行变更，已于2026-11-05应用；并非重复执行脚本。
 
 不要在已完成的生产库重复执行 DDL。数据脚本不改写已有非 SIM-AIP- 记录。日期由上海时区实际执行日确定；不能通过重新生成脚本并仅更新日期绕过来源复核。
 
@@ -74,7 +74,7 @@ R06 未交100吨减本需求预留60吨，demand_qty=40；实物80减占用60，
 
 T05 全量占用只能核查；T02/T03/T06应扣除占用后才讨论可处置量。所有候选仍为待核实建议，没有正式可销售冻结/质量货权映射。
 
-只读权限尚未生效：自动审批先前拒绝了未确认连接角色时的持久授权，用户随后明确选择暂不授权。未创建权限组或改变原授权。admin 是 ERP 登录名，尚不能确认 ERP_READONLY_DATABASE_URL 的数据库用户名。平台维护方需提供仅用户名（无需密码/连接串），再审阅绑定和 SELECT 范围。
+只读授权状态（2026-11-05）：此前暂缓授权后，用户明确要求执行变更，已创建 erp_ai_reader NOLOGIN 权限组，授予22张指定表及1个视图的SELECT，并配置22条专用SELECT策略。权限目录检查确认写权限对象为0、无public建表权限、无超级用户或绕过RLS权限，anon/authenticated未加入该组。视图保持security_invoker=true。尚未绑定实际平台登录账号；admin是ERP登录名，不能据此认定数据库用户名。当前工具无权SET ROLE，因此没有声称完成该角色的实际连接查询测试。平台维护方需提供ERP_READONLY_DATABASE_URL中的数据库用户名（无需密码或完整连接串），再确认绑定并验证连接。
 
 平台端“重新计算”、AI意见、同意/否决/待定及处理记录的操作不在当前 ERP 仓库中，本轮未声称已完成平台页面验收。由平台选择具体法人、清空搜索后读取并重算。合同 formal/framework、自然年、签署原件状态与订单合同绑定，以及库存质量/货权映射属于文档所列后续增强，本轮未冒充已完成。
 
