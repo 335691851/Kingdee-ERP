@@ -80,3 +80,11 @@ T05 全量占用只能核查；T02/T03/T06应扣除占用后才讨论可处置�
 
 
 补充验收：33条仓库余额的数量与成本均等于其流水累计值，异常0；清单专项测试2项通过。旧应用全套测试本次受本机临时目录/测试数据库运行影响未完成，不把它作为本轮已通过的验证。
+
+## 平台只读连接接通（2026-11-05）
+
+已定位鲁银投资智能化项目（Vercel luyin-aip）的配置，原ERP连接使用postgres管理角色。现已为同一平台创建专用登录erp_aip_runtime，继承erp_ai_reader，默认事务只读，无超级用户、建库、建角色、复制或绕过RLS权限。补齐平台实际报表依赖material_category的SELECT及该权限组专用策略。未修改ERP应用自身的DATABASE_URL或平台APP_DATABASE_URL。
+
+专用登录通过实际共享连接池认证，读取12列备货视图8行，其中当前有效有缺口6行；分类表读取成功，表写权限对象为0。平台本地.env.local及Vercel Production的ERP_READONLY_DATABASE_URL已替换；凭证不写入仓库。无凭证验收结果见outputs/aip-reader-live-check.json。线上重新部署使用原提交24103ad28d68dde513cce157c92b911fc87e9b1a。
+
+平台现有scripts/check-db.mjs输出ERP connected=true、missing=[]、writable=[]、privileged=false、strictPassed=true。Production重部署dpl_Gy5oMaEimPpBfWVCdttrjoujY4o8已READY。此验证覆盖实际连接与部署状态，未冒充完成平台页面建议审批验收。平台业务库APP_DATABASE_URL的原配置未调整。

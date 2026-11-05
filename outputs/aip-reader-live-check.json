@@ -1,0 +1,6 @@
+{
+  "role": "erp_aip_runtime",
+  "restock_columns": 12,
+  "restock_candidates": 6,
+  "category_read": true
+}
