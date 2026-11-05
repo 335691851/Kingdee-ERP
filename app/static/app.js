@@ -10,7 +10,7 @@ const icons=['▦','▱','▤','◇','▥','▣','◎','↗','↙','▧','≡','
 function toast(message,error=false){$('toast').textContent=message;$('toast').className=error?'error':'';$('toast').style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.display='none',4200)}
 async function api(path,options={}){
  const r=await fetch('/api'+path,{credentials:'same-origin',...options,headers:{'Content-Type':'application/json','X-ERP-Client':'luyan-web',...options.headers}});
- if(r.status===401){$('shell').hidden=true;$('login').hidden=false;throw Error('请登录或重新登录')}
+ if(r.status===401){$('shell').hidden=true;$('login').hidden=false;let x;try{x=await r.json()}catch{}throw Error(typeof x?.detail==='string'?x.detail:'请登录或重新登录')}
  if(!r.ok){let x;try{x=await r.json()}catch{x={detail:await r.text().catch(()=>r.statusText)}};throw Error(typeof x.detail==='string'?x.detail:JSON.stringify(x.detail||x))}
  return r.json();
 }
