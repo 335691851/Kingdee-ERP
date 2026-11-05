@@ -6,7 +6,7 @@ SELECT r.company_id,r.material_id,r.plan_start,r.plan_end,
  coalesce(tr.qty,0)::numeric in_transit_qty,
  coalesce(mo.qty,0)::numeric scheduled_qty,
  r.safety_qty,(total_capacity-occupied_capacity)::numeric capacity_qty,r.snapshot_date,
- r.source_refs||';来源记录=ai_restock_source/'||r.scenario_id||';订单行='||coalesce(r.order_line_id::text,'无销售需求')||';在途='||transit_ref||';排产='||scheduled_ref||';安全批准='||safety_approval||';产能='||capacity_ref||';口径v1' source_refs
+ r.source_refs||';来源记录=ai_restock_source/'||r.scenario_id||';订单行='||coalesce(r.order_line_id::text,'无销售需求')||';在途='||CASE WHEN r.transit_qty=0 THEN '明确无在途（来源记录确认0吨）' ELSE transit_ref END||';排产='||CASE WHEN r.scheduled_qty=0 THEN '明确无排产（来源记录确认0吨）' ELSE scheduled_ref END||';安全批准='||safety_approval||';产能='||capacity_ref||';口径v1' source_refs
 FROM ai_restock_source r JOIN company c ON c.id=r.company_id AND c.kind='生产法人'
 JOIN material m ON m.id=r.material_id AND m.kind='product' JOIN uom u ON u.id=m.uom_id AND u.name='吨'
 LEFT JOIN document_line dl ON dl.id=r.order_line_id LEFT JOIN document d ON d.id=dl.document_id

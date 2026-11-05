@@ -90,7 +90,7 @@ for i,c in enumerate(cases):
  IF bid IS NULL THEN RAISE EXCEPTION 'Missing factory source BOM'; END IF;
  INSERT INTO bom_line(bom_id,component_id,qty_per_ton) SELECT bid,component_id,qty_per_ton FROM bom_line WHERE bom_id=(SELECT id FROM bom WHERE company_id=cid AND material_id=src ORDER BY id LIMIT 1);
  IF ln IS NOT NULL THEN INSERT INTO delivery_schedule(line_id,due_date,qty,fulfilled_qty) SELECT ln,(d+14)::text,qty,0 FROM document_line WHERE id=ln; END IF;
- INSERT INTO ai_restock_source VALUES(sc,cid,mid,d,d+14,CASE WHEN sc='R08' THEN d-2 ELSE d END,ln,CASE WHEN sc='R06' THEN 60 ELSE 0 END,'SIM-AIP-'||sc||'-TR',(x->>'t')::numeric,d+7,'SIM-AIP-'||sc||'-MO',(x->>'m')::numeric,d+10,(x->>'s')::numeric,'SIM-AIP-'||sc||'-SAFE-模拟批准','SIM-AIP-'||sc||'-CAP-模拟能力',(x->>'cap')::numeric+(x->>'m')::numeric,(x->>'m')::numeric,'联调模拟＋'||sc||';供货工厂='||cid||';原型BOM='||src||';预留与净需求去重;v1');
+ INSERT INTO ai_restock_source VALUES(sc,cid,mid,d,d+14,CASE WHEN sc='R08' THEN d-2 ELSE d END,ln,CASE WHEN sc='R06' THEN 60 ELSE 0 END,'SIM-AIP-'||sc||'-TR',(x->>'t')::numeric,d+7,'SIM-AIP-'||sc||'-MO',(x->>'m')::numeric,d+10,(x->>'s')::numeric,'SIM-AIP-'||sc||'-SAFE-模拟批准','SIM-AIP-'||sc||'-CAP-模拟能力',(x->>'cap')::numeric+(x->>'m')::numeric,(x->>'m')::numeric,'联调模拟＋'||sc||';供货工厂='||cid||';原型物料='||src||';预留与净需求去重;v1');
 '''
 sql+=''' END $$;
 COMMIT;
