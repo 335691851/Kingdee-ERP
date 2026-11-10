@@ -65,8 +65,8 @@ def index():
     # Render production login configuration before JavaScript loads.
     import re
     html=(STATIC/'index.html').read_text(encoding='utf8')
-    html=html.replace('id="username" value="admin"','id="username" value="" placeholder="Supabase 登录邮箱"')
-    html=html.replace('id="password" value="luyan-demo-2026"','id="password" value=""')
+    html=html.replace('id="username" value="admin"','id="username" value="admin@luyin.com" placeholder="Supabase 登录邮箱"')
+    html=html.replace('id="password" value="luyan-demo-2026"','id="password" value="admin"')
     html=re.sub(r'<div class="login-note">.*?</div>','<div class="login-note">使用已开通 ERP 法人权限的 Supabase 账户登录。所有历史交易为模拟数据。</div>',html,count=1)
     return HTMLResponse(html)
 @app.get('/api/health')
